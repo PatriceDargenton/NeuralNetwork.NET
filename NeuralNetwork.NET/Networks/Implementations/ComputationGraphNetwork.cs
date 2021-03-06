@@ -513,6 +513,22 @@ namespace NeuralNetworkNET.Networks.Implementations
             return f == null ? null : new ComputationGraphNetwork(f(inputs));
         }
 
+        /// <summary>
+        /// Get weights and biases of the ComputationGraphNetwork
+        /// </summary>
+        protected override void GetWeightsProtected([NotNull] float[][] outWeights, [NotNull] float[][] outBiases)
+        {
+            // ToDo
+        }
+
+        /// <summary>
+        /// Set weights and biases of the ComputationGraphNetwork
+        /// </summary>
+        protected override void SetWeightsProtected([NotNull] float[][] inWeights, [NotNull] float[][] inBiases)
+        {
+            // ToDo
+        }
+
         /// <inheritdoc/>
         public override bool Equals(INeuralNetwork other) => base.Equals(other) && other is ComputationGraphNetwork network && Graph.Equals(network.Graph);
 

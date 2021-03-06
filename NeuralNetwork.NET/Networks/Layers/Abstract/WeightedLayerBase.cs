@@ -29,13 +29,13 @@ namespace NeuralNetworkNET.Networks.Layers.Abstract
         /// Gets the weights for the current network layer
         /// </summary>
         [NotNull]
-        public float[] Weights { get; }
+        public float[] Weights { get; set; }
 
         /// <summary>
         /// Gets the biases for the current network layer
         /// </summary>
         [NotNull]
-        public float[] Biases { get; }
+        public float[] Biases { get; set; }
 
         #endregion
 
@@ -98,6 +98,22 @@ namespace NeuralNetworkNET.Networks.Layers.Abstract
             stream.WriteShuffled(Weights);
             stream.Write(Biases.Length);
             stream.WriteShuffled(Biases);
+        }
+
+        /// <inheritdoc/>
+        public override void GetWeights(
+            [NotNull] out float[] outWeights, [NotNull] out float[] outBiases)
+        {
+            outWeights = Weights;
+            outBiases = Biases;
+        }
+
+        /// <inheritdoc/>
+        public override void SetWeights(
+            [NotNull] float[] inWeights, [NotNull] float[] inBiases)
+        {
+            Weights = inWeights;
+            Biases = inBiases;
         }
     }
 }
