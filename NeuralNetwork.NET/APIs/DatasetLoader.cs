@@ -29,7 +29,7 @@ namespace NeuralNetworkNET.APIs
         /// <param name="size">The desired dataset batch size</param>
         [PublicAPI]
         [Pure, NotNull]
-        public static ITrainingDataset Training([NotNull] float[][] input, [NotNull] float[][] target, int size)
+        public static ITrainingDataset Training2([NotNull] float[][] input, [NotNull] float[][] target, int size)
         {
             // Zip: just concatenate the input array with the target array like a zipper!
             // var trainingData = Enumerable.Zip(input, target).ToArray();                   .NET Core 3.1
