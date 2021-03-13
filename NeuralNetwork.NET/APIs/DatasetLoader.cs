@@ -22,6 +22,25 @@ namespace NeuralNetworkNET.APIs
         #region Training
 
         /// <summary>
+        /// Creates a new <see cref="ITrainingDataset"/> instance to train a network from the input and target collections, with the specified batch size
+        /// </summary>
+        /// <param name="input">The input collection to use to build the training dataset</param>
+        /// <param name="target">The target collection to use to build the training dataset</param>
+        /// <param name="size">The desired dataset batch size</param>
+        [PublicAPI]
+        [Pure, NotNull]
+        public static ITrainingDataset Training([NotNull] float[][] input, [NotNull] float[][] target, int size)
+        {
+            // Zip: just concatenate the input array with the target array like a zipper!
+            // var trainingData = Enumerable.Zip(input, target).ToArray();                   .NET Core 3.1
+            // var trainingData = Enumerable.Zip(input, target, (n, c) => (n, c)).ToArray(); .NET Framework 4.7.2
+            // https://docs.microsoft.com/dotnet/api/system.linq.enumerable.zip?view=net-5.0
+            var trainingData = input.Zip(target, (n, c) => (n, c)).ToArray();              //.NET Standard 2.0
+            var dataset = DatasetLoader.Training(trainingData, size);
+            return dataset;
+        }
+
+        /// <summary>
         /// Creates a new <see cref="ITrainingDataset"/> instance to train a network from the input collection, with the specified batch size
         /// </summary>
         /// <param name="data">The source collection to use to build the training dataset</param>
