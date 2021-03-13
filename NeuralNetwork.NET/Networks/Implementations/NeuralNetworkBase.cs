@@ -306,6 +306,22 @@ namespace NeuralNetworkNET.Networks.Implementations
             }
         }
 
+        /// <inheritdoc/>
+        public void GetWeights([NotNull] float[][] outWeights, [NotNull] float[][] outBiases)
+        {
+            GetWeightsProtected(outWeights, outBiases);
+        }
+        protected abstract void GetWeightsProtected(
+            [NotNull] float[][] outWeights, [NotNull] float[][] outBiases);
+
+        /// <inheritdoc/>
+        public void SetWeights([NotNull] float[][] inWeights, [NotNull] float[][] inBiases)
+        {
+            SetWeightsProtected(inWeights, inBiases);
+        }
+        protected abstract void SetWeightsProtected(
+            [NotNull] float[][] inWeights, [NotNull] float[][] inBiases);
+
         /// <summary>
         /// Writes the current network data to the input <see cref="Stream"/>
         /// </summary>

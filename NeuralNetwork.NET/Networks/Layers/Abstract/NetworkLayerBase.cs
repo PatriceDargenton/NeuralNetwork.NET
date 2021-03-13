@@ -103,5 +103,23 @@ namespace NeuralNetworkNET.Networks.Layers.Abstract
             stream.Write(OutputInfo);
             stream.Write(ActivationType);
         }
+
+        /// <summary>
+        /// Get weights and biases of the current layer
+        /// </summary>
+        public virtual void GetWeights(
+            [NotNull] out float[] outWeights, [NotNull] out float[] outBiases)
+        {
+            outWeights = null;
+            outBiases = null;
+        }
+
+        /// <summary>
+        /// Set weights and biases of the current layer
+        /// </summary>
+        public virtual void SetWeights(
+            [NotNull] float[] inWeights, [NotNull] float[] inBiases)
+        {
+        }
     }
 }

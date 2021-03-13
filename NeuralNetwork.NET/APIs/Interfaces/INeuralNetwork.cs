@@ -136,6 +136,16 @@ namespace NeuralNetworkNET.APIs.Interfaces
         /// <param name="stream">The <see cref="Stream"/> to use to write the network data</param>
         void Save([NotNull] Stream stream);
 
+        /// <summary>
+        /// Get weights and biases of the network
+        /// </summary>
+        void GetWeights([NotNull] float[][] outWeights, [NotNull] float[][] outBiases);
+
+        /// <summary>
+        /// Set weights and biases of the network
+        /// </summary>
+        void SetWeights([NotNull] float[][] inWeights, [NotNull] float[][] inBiases);
+
         #endregion
     }
 }

@@ -284,6 +284,28 @@ namespace NeuralNetworkNET.Networks.Implementations
             return new SequentialNetwork(layers.ToArray());
         }
 
+        /// <summary>
+        /// Get weights and biases of the SequentialNetwork
+        /// </summary>
+        protected override void GetWeightsProtected(
+            [NotNull] float[][] outWeights, [NotNull] float[][] outBiases)
+        {
+            var i = 0;
+            foreach (NetworkLayerBase layer in Layers.Cast<NetworkLayerBase>())
+                layer.GetWeights(out outWeights[i], out outBiases[i++]);
+        }
+
+        /// <summary>
+        /// Set weights and biases of the SequentialNetwork
+        /// </summary>
+        protected override void SetWeightsProtected(
+            [NotNull] float[][] inWeights, [NotNull] float[][] inBiases)
+        {
+            var i = 0;
+            foreach (NetworkLayerBase layer in Layers.Cast<NetworkLayerBase>())
+                layer.SetWeights(inWeights[i], inBiases[i++]);
+        }
+
         /// <inheritdoc/>
         public override bool Equals(INeuralNetwork other) => other != null &&
                                                              base.Equals(other) &&
