@@ -170,7 +170,7 @@ namespace NeuralNetworkNET.SupervisedLearning.Data
         public static unsafe BatchesCollection From((float[,] X, float[,] Y) dataset, int size)
         {
             // Local parameters
-            if (size < 10) throw new ArgumentOutOfRangeException(nameof(size), "The batch size can't be smaller than 10");
+            if (size < 1) throw new ArgumentOutOfRangeException(nameof(size), "The batch size can't be smaller than 1");
             int
                 samples = dataset.X.GetLength(0),
                 wx = dataset.X.GetLength(1),
@@ -217,7 +217,7 @@ namespace NeuralNetworkNET.SupervisedLearning.Data
         public static BatchesCollection From([NotNull] IEnumerable<Func<(float[] X, float[] Y)>> dataset, int size)
         {
             // Local parameters
-            if (size < 10) throw new ArgumentOutOfRangeException(nameof(size), "The batch size can't be smaller than 10");
+            if (size < 1) throw new ArgumentOutOfRangeException(nameof(size), "The batch size can't be smaller than 1");
             return new BatchesCollection(dataset.AsParallel().Select(f => f()).Partition(size).Select(SamplesBatch.From).ToArray());
         }
 
@@ -232,7 +232,7 @@ namespace NeuralNetworkNET.SupervisedLearning.Data
         public static BatchesCollection From([NotNull] IEnumerable<(float[] X, float[] Y)> dataset, int size)
         {
             // Local parameters
-            if (size < 10) throw new ArgumentOutOfRangeException(nameof(size), "The batch size can't be smaller than 10");
+            if (size < 1) throw new ArgumentOutOfRangeException(nameof(size), "The batch size can't be smaller than 1");
             return new BatchesCollection(dataset.ToArray().AsParallel().Partition(size).Select(SamplesBatch.From).ToArray());
         }
 
