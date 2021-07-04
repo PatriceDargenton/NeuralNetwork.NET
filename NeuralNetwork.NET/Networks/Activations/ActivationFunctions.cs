@@ -218,5 +218,29 @@ namespace NeuralNetworkNET.Networks.Activations
         [Pure]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Identityprime(float x) => 1;
+
+        /// <summary>
+        /// Applies the Mish function
+        /// </summary>
+        /// <param name="x">The input to process</param>
+        [PublicAPI]
+        [Pure]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float Mish(float x) => x * Tanh(Softplus(x));
+
+        /// <summary>
+        /// Applies the Mish Derivative function
+        /// </summary>
+        /// <param name="x">The input to process</param>
+        [PublicAPI]
+        [Pure]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float MishPrime(float x)
+        {
+            float
+                s = 2 * (float)Math.Exp(x) + (float)Math.Exp(2 * x) + 2,
+                w = 4 * (x + 1) + (4 * ((float)Math.Exp(2 * x))) + (float)Math.Exp(3 * x) + (float)Math.Exp(x) * (4 * x + 6);
+            return (float)Math.Exp(x) * w / (s * s);
+        }
     }
 }

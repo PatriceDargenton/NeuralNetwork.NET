@@ -59,6 +59,13 @@
         /// <summary>
         /// A linear activation function that just returns the input value
         /// </summary>
-        Identity
+        Identity,
+        
+        /// <summary>
+        /// The Mish function, proposed by Diganta Misra (https://arxiv.org/abs/1908.08681)
+        /// Definition: x tanh(ln(1 + e^2)) 
+        /// Implementation: x * Tanh(Softplus(x))
+        /// </summary>
+        Mish
     }
 }
