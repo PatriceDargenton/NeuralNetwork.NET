@@ -13,9 +13,9 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Alea" Version="3.0.4" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="1.2.0" />
-    <PackageReference Include="MSTest.TestFramework" Version="1.2.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.6.4" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.6.4" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\NeuralNetwork.NET\NeuralNetwork.NET.csproj" />
